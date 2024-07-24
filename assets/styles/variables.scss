@@ -1,0 +1,152 @@
+:root {
+  // desktop headings
+  --f-h1: 48px;
+  --f-h2: 36px;
+  --f-h3: 32px;
+  --f-h4: 24px;
+  --f-h5: 20px;
+  --f-h6: 18px;
+  // desktop subtitles
+  --f-s1: 24px;
+  --f-s2: 20px;
+  --f-s3: 18px;
+  --f-s4: 16px;
+  --f-s5: 12px;
+  // desktop paragraphs
+  --f-p1: 24px;
+  --f-p2: 18px;
+  --f-p3: 16px;
+  --f-p4: 14px;
+  --f-p5: 12px;
+  // desktop number and banner link
+  --f-num: 42px;
+  --f-banner-link: 18px;
+  // desktop buttons
+  --f-btn-l: 18px;
+  --f-btn-m: 16px;
+  --f-btn-s: 14px;
+  // others
+  --f-error: 12px;
+
+  // colors
+  --c-footer-bg: rgba(25, 25, 25, 1);
+  --c-secondary: rgba(144, 159, 69, 1);
+  --c-page-bg: rgba(31, 31, 31, 1);
+  --c-filler: rgba(41, 41, 41, 1);
+  --c-link-text: rgba(133, 133, 133, 1);
+  --c-text: rgba(238, 238, 238, 1);
+  --c-text-elements: rgba(194, 194, 194, 1);
+  --c-pagination-element: rgba(255, 255, 255, 1);
+  // statuses
+  --c-success: rgba(152, 191, 68, 1);
+  --c-warning: rgba(221, 194, 97, 1);
+  --c-error: rgba(243, 89, 79, 1);
+  // gradients
+  --c-gradient-end: rgba(15, 15, 14, 0);
+  --c-gradient-start: rgba(15, 15, 14, 1);
+}
+
+//mixins
+@mixin font($size, $height, $weight, $case: none) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $height;
+  text-transform: $case;
+}
+
+//headings
+%h1 {
+  @include font(var(--f-h1), 1.2, 600, uppercase);
+}
+%h2 {
+  @include font(var(--f-h2), 1.2, 600, uppercase);
+}
+%h3 {
+  @include font(var(--f-h3), 1.2, 600);
+}
+%h4 {
+  @include font(var(--f-h4), 1.2, 600);
+}
+%h5 {
+  @include font(var(--f-h5), 1.2, 600);
+}
+%h6 {
+  @include font(var(--f-h6), 1.2, 600);
+}
+
+//subtitles
+
+%s1 {
+  @include font(var(--f-s1), 1.2, 500);
+}
+%s2 {
+  @include font(var(--f-s2), 1.2, 500);
+}
+%s3 {
+  @include font(var(--f-s3), 1.2, 500);
+}
+%s4 {
+  @include font(var(--f-s4), 1.2, 500);
+}
+%s5 {
+  @include font(var(--f-s5), 1.2, 500);
+}
+
+//paragraphs
+%p1 {
+  @include font(var(--f-p1), 1.2, 400);
+}
+%p2 {
+  @include font(var(--f-p2), 1.35, 400);
+}
+%p3 {
+  @include font(var(--f-p3), 1.45, 400);
+}
+%p4 {
+  @include font(var(--f-p4), 1.4, 400);
+}
+%p5 {
+  @include font(var(--f-p5), 1.2, 400);
+}
+
+//buttons
+%button_l {
+  @include font(var(--f-btn-l), 1.2, 500);
+}
+%button_m {
+  @include font(var(--f-btn-m), 1.2, 500);
+}
+%button_s {
+  @include font(var(--f-btn-s), 1.2, 500);
+}
+//other
+%num {
+  @include font(var(--f-num), 1.2, 600);
+}
+%banner_link {
+  @include font(var(--f-banner-link), 1.35, 500);
+}
+%err {
+  @include font(var(--f-error), 1.2, 600);
+}
+
+@media screen and (max-width: 1024px) {
+  :root {
+    // mobile headings
+    --f-h1: 32px;
+    --f-h2: 28px;
+    --f-h3: 24px;
+    --f-h4: 20px;
+    --f-h5: 18px;
+    --f-h6: 16px;
+    // mobile subtitles
+    --f-s1: 20px;
+    --f-s2: 18px;
+    --f-s3: 16px;
+    --f-s4: 16px;
+    --f-s5: 12px;
+    // mobile number and banner link
+    --f-num: 28px;
+    --f-banner-link: 14px;
+  }
+}
