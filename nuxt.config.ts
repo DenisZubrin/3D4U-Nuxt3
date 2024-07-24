@@ -14,4 +14,7 @@ export default defineNuxtConfig({
   // css: {
 
   // }
+  app: {
+    baseURL: '/3D4U-Nuxt3/',
+  },
 });
