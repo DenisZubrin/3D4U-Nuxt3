@@ -1,80 +1,55 @@
 <template>
   <form action="#" class="form">
     <div class="form__text">
-      <div class="form__field">
-        <label
-          for="name"
-          class="form__label"
-          :class="{ form__label_focused: state.userName }"
-          >Ваше имя*</label
-        >
-        <input
-          type="text"
-          class="form__input"
-          :class="{ form__input_focused: state.userName }"
-          name="name"
-          id="name"
-          v-model="state.userName"
-        />
-        <div class="form__error" v-if="v$.userName.$error">
-          Это поле обязательно
-        </div>
-      </div>
-      <div class="form__field">
-        <label
-          for="phone"
-          class="form__label"
-          :class="{ form__label_focused: state.userPhone }"
-          >Телефон*</label
-        >
-        <input
-          type="number"
-          class="form__input"
-          :class="{ form__input_focused: state.userPhone }"
-          name="phone"
-          id="phone"
-          v-model="state.userPhone"
-        />
-        <div class="form__error" v-if="v$.userPhone.$error">
-          Это поле обязательно
-        </div>
-      </div>
-      <div class="form__field">
-        <label
-          for="textarea"
-          class="form__label"
-          :class="{ form__label_focused: state.userText }"
-          >Расскажите нам о своем проекте</label
-        >
-        <input
-          type="text"
-          class="form__input"
-          :class="{ form__input_focused: state.userText }"
-          name="textarea"
-          id="textarea"
-          v-model="state.userText"
-        />
-      </div>
+      <Input
+        v-model="validationFields.userName"
+        :type="'text'"
+        :id="'userName'"
+        :name="'userName'"
+        :placeholder="'Иван Иванов'"
+        :labelText="'Ваше имя*'"
+        :error="v$.userName.$error"
+        :errorText="'Это поле обязательно'"
+        class="form__field"
+      />
+      <Input
+        v-model="validationFields.userPhone"
+        :type="'number'"
+        :id="'userPhone'"
+        :name="'userPhone'"
+        :placeholder="'+7 (___) ___-__-__'"
+        :labelText="'Телефон*'"
+        :error="v$.userPhone.$error"
+        :errorText="'Это поле обязательно'"
+        class="form__field"
+      />
+      <Input
+        :type="'text'"
+        :id="'userMessage'"
+        :name="'userMessage'"
+        :labelText="'Расскажите нам о своем проекте'"
+        class="form__field"
+      />
       <div class="form__agreement">
         <input
-          type="checkbox"
-          class="form__checkbox"
-          name="checkbox"
+          v-model="validationFields.userCheckbox"
           id="checkbox"
-          v-model="state.userCheckbox"
+          class="form__checkbox"
+          type="checkbox"
+          name="checkbox"
         />
-        <label for="checkbox" class="form__agreement-label"
+        <label class="form__agreement-label" for="checkbox"
           >Я соглашаюсь с Политикой Конфиденциальности сайта</label
         >
-        <div class="form__error" v-if="v$.userCheckbox.$error">
+        <div v-if="v$.userCheckbox.$error" class="form__error">
           Необходимо поставить галочку
         </div>
       </div>
     </div>
     <Button
-      class="form__button"
       @click.prevent="submitForm"
       :text="'Отправить'"
+      class="form__button"
     />
   </form>
 </template>
@@ -82,14 +57,14 @@
 import { useVuelidate } from '@vuelidate/core';
 import { required, sameAs } from '@vuelidate/validators';
 
-const state = reactive({
+const validationFields = reactive({
   userName: '',
   userPhone: '',
   userText: '',
   userCheckbox: false,
 });
 
-const rules = computed(() => {
+const validationRules = computed(() => {
   return {
     userName: { required },
     userPhone: { required },
@@ -97,14 +72,14 @@ const rules = computed(() => {
   };
 });
 
-const v$ = useVuelidate(rules, state);
+const v$ = useVuelidate(validationRules, validationFields);
 
 const submitForm = async () => {
   await v$.value.$validate();
 };
 </script>
-<style lang="scss">
 
+<style lang="scss">
 .form {
   display: flex;
   align-items: start;

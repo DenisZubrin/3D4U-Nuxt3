@@ -1,5 +1,12 @@
 <template>
-  <button class="button">
+  <button
+    :class="[
+      'button',
+      {
+        'button_outline': outline,
+      },
+    ]"
+  >
     <span class="button__text">{{ text }}</span>
     <slot name="icon"></slot>
   </button>
@@ -8,11 +15,12 @@
 defineProps({
   text: {
     type: String,
+    required: true,
   },
+  outline: Boolean
 });
 </script>
 <style lang="scss">
-
 .button {
   border: none;
   border-radius: 8px;
@@ -33,16 +41,9 @@ defineProps({
   }
 
   &__icon {
-    width: 22px;
-    height: 22px;
-    fill: var(--c-filler);
     position: absolute;
-    top: calc(50% - 12px);
-    right: 10px;
-
-    &_light {
-      fill: var(--c-text);
-    }
+    top: calc(50% - 11px);
+    right: 8px;
   }
 
   &:hover,
@@ -52,11 +53,7 @@ defineProps({
     border-color: var(--c-secondary);
   }
 
-  &:hover &__icon {
-    fill: var(--c-text);
-  }
-
-  &_transparent {
+  &_outline {
     background-color: transparent;
     color: var(--c-text);
     border: 1px solid var(--c-text);
