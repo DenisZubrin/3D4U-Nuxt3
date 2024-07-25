@@ -3,18 +3,25 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: false },
-  modules: ['nuxt-swiper', '@nuxt/eslint'],
-  // swiper: {
-  // Swiper options
-  //----------------------
-  // prefix: 'Swiper',
-  // styleLang: 'css',
-  // modules: ['navigation', 'pagination'], // all modules are imported by default
-  // }
-  // css: {
-
-  // }
+  modules: ['nuxt-swiper', '@nuxt/eslint', '@nuxt/image'],
   app: {
-    baseURL: '/3D4U-Nuxt3/',
+    // baseURL: '/3D4U-Nuxt3/',
   },
+  css: ['./assets/styles/style.scss'],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "@/assets/styles/variables.scss";',
+        },
+      },
+    },
+  },
+
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+  ],
 });
