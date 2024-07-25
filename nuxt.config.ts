@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: ['nuxt-swiper', '@nuxt/eslint', '@nuxt/image'],
   app: {
-    // baseURL: '/3D4U-Nuxt3/',
+    baseURL: '/3D4U-Nuxt3/',
   },
   css: ['./assets/styles/style.scss'],
   vite: {
@@ -24,4 +24,10 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      failOnError: false, 
+    },
+  },
 });
