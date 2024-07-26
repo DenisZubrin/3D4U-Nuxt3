@@ -2,23 +2,24 @@
   <header class="header">
     <div class="container header__container">
       <div
-        class="burger header__burger"
         @click="toggleMenu"
-        :class="{
-          burger_open: state.menuActive,
-        }"
+        :class="['burger header__burger',
+          {
+            burger_open: state.menuActive,
+          }
+        ]"
       >
         <div class="burger__line"></div>
         <div class="burger__line"></div>
         <div class="burger__line"></div>
       </div>
-      <NuxtLink to="/" class="logo header__logo">
+      <NuxtLink class="logo header__logo" to="/">
         <figure class="logo__container">
           <IconBase
-            :iconName="'3D4U logo'"
-            :iconColor="'var(--c-text)'"
             :width="46"
             :height="46"
+            :iconColor="'var(--c-text)'"
+            :iconName="'3D4U logo'"
           >
             <Icon3D4U-logo />
           </IconBase>
@@ -28,27 +29,28 @@
         </figure>
       </NuxtLink>
       <nav
-        class="nav header__nav"
-        :class="{
+        :class="[
+          'nav header__nav',
+        {
           header__nav_mobile: state.menuActive,
-        }"
+        }]"
       >
         <ul class="nav__list">
           <li class="nav__item">
             <div class="select nav__select">
               <NuxtLink
-                to="#"
-                class="link select__link nav__link"
                 @mouseover="iconColor = 'var(--c-secondary)'"
                 @mouseleave="iconColor = 'var(--c-text)'"
+                class="link select__link nav__link"
+                to="#"
                 >Визуализация мебели</NuxtLink
               >
               <IconBase
+                class="select__icon"
                 :width="16"
                 :height="16"
-                :iconName="'CaretDown'"
                 :iconColor="iconColor"
-                class="select__icon"
+                :iconName="'CaretDown'"
               >
                 <IconCaretDown />
               </IconBase>
@@ -80,18 +82,18 @@
           <li class="nav__item">
             <div class="select nav__select">
               <NuxtLink
-                to="#"
-                class="link select__link nav__link"
                 @mouseover="iconColor = 'var(--c-secondary)'"
                 @mouseleave="iconColor = 'var(--c-text)'"
+                class="link select__link nav__link"
+                to="#"
                 >Дизайн-проекты</NuxtLink
               >
               <IconBase
+                class="select__icon"
                 :width="16"
                 :height="16"
                 :iconName="'CaretDown'"
                 :iconColor="iconColor"
-                class="select__icon"
               >
                 <IconCaretDown />
               </IconBase>
@@ -130,19 +132,18 @@
           </li>
         </ul>
         <Button
-          class="nav__button"
-          type="submit"
-          outline
           @submit.prevent
+          class="nav__button"
+          outline
           :text="'Заказать проект'"
         >
           <template #icon>
             <IconBase
+              class="button__icon"
               :width="22"
               :height="22"
-              :iconName="'ArrowUpRight'"
               :iconColor="'var(--c-text)'"
-              class="button__icon"
+              :iconName="'ArrowUpRight'"
             >
               <IconArrowUpRight />
             </IconBase>
@@ -157,11 +158,11 @@
       >
         <template #icon>
           <IconBase
+            class="button__icon header__button-icon"
             :width="22"
             :height="22"
-            :iconName="'ArrowUpRight'"
             :iconColor="'var(--c-text)'"
-            class="button__icon header__button-icon"
+            :iconName="'ArrowUpRight'"
           >
             <IconArrowUpRight />
           </IconBase>
@@ -170,7 +171,9 @@
     </div>
   </header>
 </template>
+
 <script setup>
+
 let iconColor = ref('var(--c-text)');
 const state = reactive({
   menuActive: false,
@@ -179,7 +182,9 @@ const state = reactive({
 const toggleMenu = () => {
   state.menuActive = !state.menuActive;
 };
+
 </script>
+
 <style lang="scss">
 .header {
   position: fixed;

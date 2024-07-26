@@ -1,31 +1,41 @@
 <template>
   <div class="input">
-    <label v-if="labelText" :for="id" class="input__label">{{
-      labelText
-    }}</label>
+    <label 
+      v-if="label" 
+      class="input__label" 
+      :for="id"
+    >
+      {{ label }}
+    </label>
     <input
-      :type="inputType"
+      v-model="model"
+      class="input__field"
+      :type="type"
       :id="id"
       :name="name"
-      class="input__field"
       :placeholder="placeholder"
-      v-model="model"
     />
-    <div v-if="error" class="input__error">{{ errorText }}</div>
+    <div 
+      v-if="error" 
+      class="input__error"
+    >
+      {{ errorText }}
+    </div>
   </div>
 </template>
+
 <script setup>
+
 defineProps({
-  inputType: {
+  type: {
     type: String,
     default: 'text',
-    required: true,
   },
   id: {
     type: [String, Number],
     required: true,
   },
-  labelText: {
+  label: {
     type: String,
   },
   placeholder: String,
@@ -37,8 +47,11 @@ defineProps({
 });
 
 const model = defineModel();
+
 </script>
+
 <style lang="scss">
+
 .input {
   position: relative;
   max-width: 322px;
@@ -103,14 +116,14 @@ const model = defineModel();
 
   // Префиксы для разных типов input
 
-  &[type='number']::-webkit-outer-spin-button,
-  &[type='number']::-webkit-inner-spin-button {
+  &__field[type='number']::-webkit-outer-spin-button,
+  &__field[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
 
-  &[type='number'],
-  &[type='number']:hover,
-  &[type='number']:focus {
+  &__field[type='number'],
+  &__field[type='number']:hover,
+  &__field[type='number']:focus {
     appearance: none;
     -moz-appearance: textfield;
   }
@@ -118,7 +131,8 @@ const model = defineModel();
 
 @media screen and (max-width: 540px) {
   .input {
-    &__label, &:focus-within &__label {
+    &__label,
+    &:focus-within &__label {
       top: 0;
       color: var(--c-text);
     }

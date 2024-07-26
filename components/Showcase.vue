@@ -19,7 +19,9 @@
     </div>
   </section>
 </template>
+
 <script setup>
+
 const articles = reactive([
   {
     id: 1,
@@ -64,8 +66,11 @@ const articles = reactive([
     text: ``,
   },
 ]);
+
 </script>
+
 <style lang="scss">
+
 .showcase {
   &__container {
     padding-bottom: 100px;

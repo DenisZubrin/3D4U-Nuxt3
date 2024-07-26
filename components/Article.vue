@@ -1,7 +1,11 @@
 <template>
   <NuxtLink to="#" class="article">
     <article class="article__container">
-      <NuxtImg :src="`./backgrounds/${img}`" alt="bg" class="article__bg" />
+      <NuxtImg 
+        class="article__bg" 
+        :src="`./backgrounds/${img}`" 
+        alt="bg" 
+      />
       <div class="article__text">
         <h4 class="article__heading">
           {{ heading }}
@@ -27,7 +31,9 @@
     </article>
   </NuxtLink>
 </template>
+
 <script setup>
+
 defineProps({
   img: {
     type: String,
@@ -39,8 +45,11 @@ defineProps({
     type: String,
   },
 });
+
 </script>
+
 <style lang="scss">
+
 .article {
   text-decoration: none;
   overflow: hidden;

@@ -1,58 +1,64 @@
 <template>
-  <form action="#" class="form">
+  <form class="form" action="#">
     <div class="form__text">
       <Input
         v-model="validationFields.userName"
+        class="form__field"
         :type="'text'"
         :id="'userName'"
         :name="'userName'"
         :placeholder="'Иван Иванов'"
-        :labelText="'Ваше имя*'"
+        :label="'Ваше имя*'"
         :error="v$.userName.$error"
         :errorText="'Это поле обязательно'"
-        class="form__field"
       />
       <Input
         v-model="validationFields.userPhone"
+        class="form__field"
         :type="'number'"
         :id="'userPhone'"
         :name="'userPhone'"
         :placeholder="'+7 (___) ___-__-__'"
-        :labelText="'Телефон*'"
+        :label="'Телефон*'"
         :error="v$.userPhone.$error"
         :errorText="'Это поле обязательно'"
-        class="form__field"
       />
       <Input
+        class="form__field"
         :type="'text'"
         :id="'userMessage'"
         :name="'userMessage'"
-        :labelText="'Расскажите нам о своем проекте'"
-        class="form__field"
+        :label="'Расскажите нам о своем проекте'"
       />
       <div class="form__agreement">
         <input
           v-model="validationFields.userCheckbox"
-          id="checkbox"
           class="form__checkbox"
           type="checkbox"
+          id="checkbox"
           name="checkbox"
         />
-        <label class="form__agreement-label" for="checkbox"
-          >Я соглашаюсь с Политикой Конфиденциальности сайта</label
+        <label 
+          class="form__agreement-label" 
+          for="checkbox"
         >
-        <div v-if="v$.userCheckbox.$error" class="form__error">
+          Я соглашаюсь с Политикой Конфиденциальности сайта</label>
+        <div 
+          v-if="v$.userCheckbox.$error" 
+          class="form__error"
+        >
           Необходимо поставить галочку
         </div>
       </div>
     </div>
     <Button
       @click.prevent="submitForm"
-      :text="'Отправить'"
       class="form__button"
+      :text="'Отправить'"
     />
   </form>
 </template>
+
 <script setup>
 import { useVuelidate } from '@vuelidate/core';
 import { required, sameAs } from '@vuelidate/validators';
@@ -77,9 +83,11 @@ const v$ = useVuelidate(validationRules, validationFields);
 const submitForm = async () => {
   await v$.value.$validate();
 };
+
 </script>
 
 <style lang="scss">
+
 .form {
   display: flex;
   align-items: start;
@@ -144,6 +152,8 @@ const submitForm = async () => {
   }
 
   &__agreement {
+    width: 100%;
+    
     &-label {
       display: flex;
       flex-wrap: wrap;

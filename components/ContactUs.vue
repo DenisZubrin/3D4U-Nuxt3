@@ -17,8 +17,8 @@
         <IconBase
           :width="32"
           :height="32"
-          :iconName="'ArrowUp'"
           :iconColor="'white'"
+          :iconName="'ArrowUp'"
         >
           <IconArrowUp />
         </IconBase>
@@ -26,8 +26,11 @@
     </div>
   </section>
 </template>
+
 <script setup></script>
+
 <style lang="scss">
+
 .contact-us {
   position: relative;
 

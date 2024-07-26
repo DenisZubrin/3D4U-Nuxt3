@@ -6,11 +6,11 @@
           <NavLink to="/" class="logo footer__logo">
             <figure class="logo__container footer__logo-container">
               <IconBase
+                class="logo__icon footer__logo-icon"
                 :width="68"
                 :height="75"
                 :iconColor="'var(--c-text)'"
                 :iconName="'3D4U logo with caption'"
-                class="logo__icon footer__logo-icon"
               >
                 <Icon3D4ULogoCaption />
               </IconBase>
@@ -135,8 +135,11 @@
     </div>
   </footer>
 </template>
+
 <script setup></script>
+
 <style lang="scss">
+
 .footer {
   background-color: var(--c-footer-bg);
 

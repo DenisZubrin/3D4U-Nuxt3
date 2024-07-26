@@ -11,7 +11,9 @@
     <slot name="icon"></slot>
   </button>
 </template>
+
 <script setup>
+
 defineProps({
   text: {
     type: String,
@@ -19,8 +21,11 @@ defineProps({
   },
   outline: Boolean
 });
+
 </script>
+
 <style lang="scss">
+
 .button {
   border: none;
   border-radius: 8px;

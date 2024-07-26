@@ -11,9 +11,18 @@
         <p class="slide__description">{{ description }}</p>
       </div>
       <ul class="slide__list">
-        <li v-for="(link, index) in links" :key="index" class="slide__item">
-          <NuxtLink class="link slide__link" to="#" @mouseover="iconColor = 'var(--c-secondary)'"
-          @mouseleave="iconColor = 'var(--c-text-elements)'">{{ link }}</NuxtLink>
+        <li 
+          v-for="(link, index) in links" :key="index" 
+          class="slide__item"
+        >
+          <NuxtLink 
+            @mouseover="iconColor = 'var(--c-secondary)'"
+            @mouseleave="iconColor = 'var(--c-text-elements)'"
+            class="link slide__link" 
+            to="#" 
+          >
+            {{ link }}
+          </NuxtLink>
           <IconBase
             class="slide__link-icon"
             :width="22"
@@ -37,8 +46,11 @@
     </div>
   </section>
 </template>
+
 <script setup>
+
 let iconColor = ref('var(--c-text-elements)');
+
 defineProps({
   links: {
     type: Array,
@@ -54,8 +66,11 @@ defineProps({
     type: String,
   },
 });
+
 </script>
+
 <style lang="scss">
+
 .slide {
   position: relative;
   height: 100%;

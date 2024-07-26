@@ -9,15 +9,19 @@
           от небольших элементов интерьера до комплексного решения
           многофункциональных центров.
         </p>
-        <Button class="button info__button" :text="'Узнать больше'" @mouseover="iconColor = 'var(--c-text)'"
-        @mouseleave="iconColor = 'var(--c-filler)'">
+        <Button 
+          @mouseover="iconColor = 'var(--c-text)'"
+          @mouseleave="iconColor = 'var(--c-filler)'"
+          class="button info__button"
+          :text="'Узнать больше'" 
+        >
           <template #icon>
             <IconBase
+              class="button__icon"
               :width="22"
               :height="22"
-              :iconName="'ArrowUpRight'"
               :iconColor="iconColor"
-              class="button__icon"
+              :iconName="'ArrowUpRight'"
             >
               <IconArrowUpRight />
             </IconBase>
@@ -62,9 +66,11 @@
     </div>
   </section>
 </template>
+
 <script setup>
 let iconColor = ref('var(--c-filler)');
 </script>
+
 <style lang="scss">
 .info {
   &__container {
