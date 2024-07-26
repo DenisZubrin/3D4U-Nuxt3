@@ -285,6 +285,7 @@ const toggleMenu = () => {
 .nav {
   display: flex;
   align-items: center;
+  margin: 0 152px 0 0;
 
   &__list {
     display: flex;
@@ -315,6 +316,7 @@ const toggleMenu = () => {
     }
 
     &__nav {
+      margin: 0;
       opacity: 0;
       visibility: hidden;
       position: fixed;
@@ -363,7 +365,7 @@ const toggleMenu = () => {
     &__list {
       flex-direction: column;
       width: 100%;
-      margin: 78px 0 0 0;
+      margin: 78px 0 30px;
     }
 
     &__item {

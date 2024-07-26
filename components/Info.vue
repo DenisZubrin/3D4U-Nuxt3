@@ -170,10 +170,15 @@ let iconColor = ref('var(--c-filler)');
   .info {
     &__container {
       flex-direction: column;
+      // gap: 0;
     }
 
     &__heading {
       font-size: 24px;
+    }
+
+    &__description {
+      margin: 0 0 16px;
     }
 
     &__card {
@@ -184,25 +189,31 @@ let iconColor = ref('var(--c-filler)');
     &__row {
       display: flex;
       justify-content: center;
-      gap: 24px;
+      margin: 0 0 16px;
+      
+      &:last-child {
+        margin: 0;
+      }
     }
 
     &__achievments {
       padding: 24px;
+      gap: 0;
     }
 
     &__number {
       font-size: 28px;
       display: block;
-      width: 50%;
+      width: 40%;
     }
 
     &__text {
-      width: 50%;
+      width: 60%;
     }
 
     &__button {
       width: 100%;
+      max-height: 48px;
     }
   }
 }

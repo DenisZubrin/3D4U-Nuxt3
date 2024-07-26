@@ -1,35 +1,43 @@
 <template>
   <div class="input">
-    <label 
-      v-if="label" 
-      class="input__label" 
+    <input
+      v-model="model"
+      v-if="type === 'checkbox'"
+      class="input__checkbox"
+      :type="type"
+      :id="id"
+      :name="name"
+    />
+    <label
+      v-if="label"
+      :class="{
+        'input__label': type === 'text' || type === 'number',
+        'input__checkbox-label': type === 'checkbox',
+      }"
       :for="id"
     >
       {{ label }}
     </label>
     <input
       v-model="model"
+      v-if="type === 'text' || type === 'number'"
       class="input__field"
       :type="type"
       :id="id"
       :name="name"
       :placeholder="placeholder"
     />
-    <div 
-      v-if="error" 
-      class="input__error"
-    >
+    <div v-if="error" class="input__error">
       {{ errorText }}
     </div>
   </div>
 </template>
 
 <script setup>
-
 defineProps({
   type: {
     type: String,
-    default: 'text',
+    required: true,
   },
   id: {
     type: [String, Number],
@@ -47,21 +55,21 @@ defineProps({
 });
 
 const model = defineModel();
-
 </script>
 
 <style lang="scss">
-
 .input {
   position: relative;
   max-width: 322px;
   width: 100%;
 
+  // type="text"
+
   &__label {
     @extend %p5;
     color: var(--c-text-elements);
     position: absolute;
-    top: 24px;
+    top: 30px;
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     &_focused {
@@ -79,12 +87,12 @@ const model = defineModel();
     border: none;
     border-bottom: 1px solid var(--c-text);
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 20px 0 12px;
+    padding: 30px 0 12px;
     box-sizing: border-box;
 
     &::placeholder {
       opacity: 0;
-      @extend %p5;
+      @extend %s4; 
       color: var(--c-text-elements);
       transition: 0.3s;
     }
@@ -114,7 +122,7 @@ const model = defineModel();
     margin: 2px 0 0;
   }
 
-  // Префиксы для разных типов input
+  // type="number"
 
   &__field[type='number']::-webkit-outer-spin-button,
   &__field[type='number']::-webkit-inner-spin-button {
@@ -127,10 +135,46 @@ const model = defineModel();
     appearance: none;
     -moz-appearance: textfield;
   }
+
+  // type="checkbox"
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__checkbox-label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: start;
+    @extend %p3;
+    color: var(--c-text-elements);
+
+    &::before {
+      content: '';
+      display: block;
+      margin: 0 12px 0 0;
+      width: 18px;
+      height: 18px;
+      border: 1px solid var(--c-text);
+      border-radius: 2px;
+      box-sizing: border-box;
+      transition-duration: 0.3s;
+      cursor: pointer;
+    }
+  }
+
+  &__checkbox:checked ~ &__checkbox-label::before {
+    background-image: url('~/assets/img/icons/Check.svg');
+    background-color: var(--c-secondary);
+    border-color: var(--c-secondary);
+  }
 }
 
 @media screen and (max-width: 540px) {
   .input {
+    // type="text"
+
     &__label,
     &:focus-within &__label {
       top: 0;
@@ -143,6 +187,25 @@ const model = defineModel();
 
     &__field::placeholder {
       opacity: 1;
+    }
+
+    // type="checkbox"
+
+    &__checkbox:checked ~ &__checkbox-label::before {
+      background-image: url('~/assets/img/icons/Check_alternative.svg');
+      background-position: -1px -1px;
+      background-color: var(--c-text);
+      color: transparent;
+      border-color: var(--c-text);
+    }
+
+    &__checkbox-label {
+      display: inline-block;
+      width: 100%;
+
+      &::before {
+        float: left;
+      }
     }
   }
 }

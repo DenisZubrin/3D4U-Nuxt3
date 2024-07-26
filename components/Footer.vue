@@ -94,7 +94,7 @@
             <a class="footer__email" href="mailto:3d4u@bk.ru">3d4u@bk.ru</a>
             <p class="footer__office">
               <span class="footer__office-building"
-                >г. Пенза, ул. Дружбы, 6 (Технопарк "Яблочков"), оф. 415</span
+                >г. Пенза, ул. Дружбы, 6<br /> (Технопарк "Яблочков"), оф. 415</span
               >
               <span class="footer__office-worktime">пн-пт с 9:00 до 17:00</span>
             </p>
@@ -205,7 +205,7 @@
     @extend %p4;
 
     &_highlighted {
-      @extend %s4;
+      @extend %s4; 
       color: var(--c-text);
     }
   }
@@ -351,10 +351,12 @@
 
     &__logo-container {
       flex-direction: row;
+      align-items: center;
     }
 
     &__logo-caption {
       margin: 0 0 0 14px;
+
     }
 
     &__terms {
@@ -366,6 +368,10 @@
     &__created-by {
       flex-direction: column;
       gap: 12px;
+    }
+
+    &__policies {
+      margin: 0;
     }
 
     &__created-by {

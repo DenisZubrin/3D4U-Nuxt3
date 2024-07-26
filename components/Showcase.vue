@@ -78,7 +78,7 @@ const articles = reactive([
 
   &__heading {
     margin: 0;
-    @extend %h1;
+    @extend %h2;
     color: var(--c-text);
     text-align: center;
   }
@@ -88,6 +88,7 @@ const articles = reactive([
     color: var(--c-text);
     margin: 24px auto 38px;
     text-align: center;
+    max-width: 667px;
   }
 
   &__articles {

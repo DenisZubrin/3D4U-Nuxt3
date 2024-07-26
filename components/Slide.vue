@@ -114,7 +114,7 @@ defineProps({
   }
 
   &__list {
-    margin: 0;
+    margin: 0 20px 0 0;
     padding: 0;
     max-width: 417px;
     width: 100%;
@@ -129,6 +129,7 @@ defineProps({
     justify-content: end;
     align-items: center;
     border-top: 1px solid var(--c-text-elements);
+    box-sizing: border-box;
 
     &:last-child {
       border-bottom: 1px solid var(--c-text-elements);
@@ -180,7 +181,8 @@ defineProps({
       flex-direction: column;
       justify-content: end;
       align-items: center;
-      padding-bottom: 16px;
+      padding-bottom: 22px;
+      gap: 0;
     }
 
     &__text {
@@ -191,6 +193,10 @@ defineProps({
       display: none;
     }
 
+    &__list {
+      margin: 0;
+    }
+
     &__item {
       justify-content: start;
     }
@@ -199,6 +205,8 @@ defineProps({
       display: block;
       z-index: 1;
       animation: moveDown 2s infinite;
+      position: relative;
+      bottom: -12px;
     }
   }
 }

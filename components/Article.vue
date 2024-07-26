@@ -110,6 +110,7 @@ defineProps({
   &__text {
     display: flex;
     flex-direction: column;
+    max-width: 467px;
   }
 
   &:hover &__inner {

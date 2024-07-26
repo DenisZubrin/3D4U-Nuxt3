@@ -30,26 +30,16 @@
         :name="'userMessage'"
         :label="'Расскажите нам о своем проекте'"
       />
-      <div class="form__agreement">
-        <input
-          v-model="validationFields.userCheckbox"
-          class="form__checkbox"
-          type="checkbox"
-          id="checkbox"
-          name="checkbox"
-        />
-        <label 
-          class="form__agreement-label" 
-          for="checkbox"
-        >
-          Я соглашаюсь с Политикой Конфиденциальности сайта</label>
-        <div 
-          v-if="v$.userCheckbox.$error" 
-          class="form__error"
-        >
-          Необходимо поставить галочку
-        </div>
-      </div>
+      <Input 
+        v-model="validationFields.userCheckbox"
+        class="form__agreement"
+        :type="'checkbox'"
+        :id="'form-checkbox'"
+        :name="'form-checkbox'"
+        :label="'Я соглашаюсь с Политикой Конфиденциальности сайта'"
+        :error="v$.userCheckbox.$error"
+        :errorText="'Необходимо поставить галочку'"
+      />
     </div>
     <Button
       @click.prevent="submitForm"
@@ -98,7 +88,7 @@ const submitForm = async () => {
   &__text {
     display: flex;
     flex-wrap: wrap;
-    gap: 24px;
+    gap: 16px 24px;
   }
 
   &__field {
@@ -107,90 +97,14 @@ const submitForm = async () => {
     width: 100%;
   }
 
-  &__label {
-    @extend %p5;
-    color: var(--c-text-elements);
-    position: absolute;
-    top: 20px;
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-    &_focused {
-      top: 0;
-      color: var(--c-secondary);
-    }
-  }
-
-  &__input {
-    width: 100%;
-    background: inherit;
-    outline: none;
-    @extend %s4;
-    color: var(--c-text);
-    border: none;
-    border-bottom: 1px solid var(--c-text);
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 20px 0 12px;
-    box-sizing: border-box;
-
-    &::placeholder {
-      @extend %p5;
-      color: var(--c-text-elements);
-    }
-
-    &_focused {
-      border-color: var(--c-secondary);
-    }
-  }
-
-  &__input:focus {
-    border-bottom: 1px solid var(--c-secondary);
-  }
-
-  &__field:focus-within &__label {
-    top: 0;
-    color: var(--c-secondary);
-  }
-
   &__agreement {
-    width: 100%;
-    
-    &-label {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: start;
-      @extend %p5;
-      color: var(--c-text-elements);
-
-      &::before {
-        content: '';
-        display: block;
-        margin: 0 12px 0 0;
-        width: 18px;
-        height: 18px;
-        border: 1px solid var(--c-text);
-        border-radius: 2px;
-        box-sizing: border-box;
-        transition-duration: 0.3s;
-        cursor: pointer;
-      }
-    }
-  }
-
-  &__checkbox {
-    display: none;
-  }
-
-  &__checkbox:checked + &__agreement-label::before {
-    background-image: url('../assets/img/icons/Check.svg');
-    background-color: var(--c-secondary);
-    border-color: var(--c-secondary);
+    max-width: 100%;
   }
 
   &__button {
     border: none;
     cursor: pointer;
-    padding: 16px 118px;
+    padding: 20.5px 118px;
     max-width: 322px;
     width: 100%;
   }
@@ -242,29 +156,7 @@ const submitForm = async () => {
     &__text {
       margin: 0;
     }
-
-    &__agreement-label {
-      display: inline-block;
-      width: 100%;
-
-      &::before {
-        float: left;
-      }
-    }
   }
 }
 
-@media screen and (max-width: 360px) {
-  .form {
-    flex-direction: column;
-
-    &__checkbox:checked + &__agreement-label::before {
-      background-image: url('../assets/img/icons/Check_alternative.svg');
-      background-position: -1px -1px;
-      background-color: var(--c-text);
-      color: transparent;
-      border-color: var(--c-text);
-    }
-  }
-}
 </style>

@@ -42,7 +42,7 @@ defineProps({
 
   &__text {
     display: block;
-    @extend %button_m;
+    @extend %button_l;
   }
 
   &__icon {
