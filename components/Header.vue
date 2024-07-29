@@ -18,7 +18,7 @@
           <IconBase
             :width="46"
             :height="46"
-            :iconColor="'var(--c-text)'"
+            :iconColor="'var(--color-text)'"
             :iconName="'3D4U logo'"
           >
             <Icon3D4U-logo />
@@ -39,20 +39,17 @@
           <li class="nav__item">
             <div class="select nav__select">
               <NuxtLink
-                @mouseover="iconColor = 'var(--c-secondary)'"
-                @mouseleave="iconColor = 'var(--c-text)'"
                 class="link select__link nav__link"
                 to="#"
                 >Визуализация мебели</NuxtLink
               >
               <IconBase
-                class="select__icon"
+                class="select__icon-wrap"
                 :width="16"
                 :height="16"
-                :iconColor="iconColor"
                 :iconName="'CaretDown'"
               >
-                <IconCaretDown />
+                <IconCaretDown class="select__icon"/>
               </IconBase>
               <ul class="select__list">
                 <li class="select__item">
@@ -82,20 +79,17 @@
           <li class="nav__item">
             <div class="select nav__select">
               <NuxtLink
-                @mouseover="iconColor = 'var(--c-secondary)'"
-                @mouseleave="iconColor = 'var(--c-text)'"
                 class="link select__link nav__link"
                 to="#"
                 >Дизайн-проекты</NuxtLink
               >
               <IconBase
-                class="select__icon"
+                class="select__icon-wrap"
                 :width="16"
                 :height="16"
                 :iconName="'CaretDown'"
-                :iconColor="iconColor"
               >
-                <IconCaretDown />
+                <IconCaretDown class="select__icon"/>
               </IconBase>
               <ul class="select__list">
                 <li class="select__item">
@@ -139,13 +133,13 @@
         >
           <template #icon>
             <IconBase
-              class="button__icon"
+              class="button__icon-wrap"
               :width="22"
               :height="22"
-              :iconColor="'var(--c-text)'"
+              :iconColor="'var(--color-text)'"
               :iconName="'ArrowUpRight'"
             >
-              <IconArrowUpRight />
+              <IconArrowUpRight class="button__icon"/>
             </IconBase>
           </template>
         </Button>
@@ -158,13 +152,13 @@
       >
         <template #icon>
           <IconBase
-            class="button__icon header__button-icon"
+            class="button__icon-wrap header__button-icon"
             :width="22"
             :height="22"
-            :iconColor="'var(--c-text)'"
+            :iconColor="'var(--color-text)'"
             :iconName="'ArrowUpRight'"
           >
-            <IconArrowUpRight />
+            <IconArrowUpRight class="button__icon"/>
           </IconBase>
         </template>
       </Button>
@@ -174,7 +168,6 @@
 
 <script setup>
 
-let iconColor = ref('var(--c-text)');
 const state = reactive({
   menuActive: false,
 });
@@ -215,17 +208,23 @@ const toggleMenu = () => {
   align-items: center;
   padding: 10px 0;
 
-  &__link:hover ~ &__icon {
+  &__icon-wrap {
+    margin: 0 0 0 4px;
+    transform: scale(1, -1);
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &__icon {
+    fill: var(--color-text);
+  }
+
+  &__link:hover ~ &__icon-wrap {
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform: rotate(0deg);
   }
 
-  &__icon {
-    margin: 0 0 0 4px;
-    width: 16px;
-    height: 16px;
-    transform: scale(1, -1);
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  &__link:hover ~ &__icon-wrap &__icon {
+    fill: var(--color-secondary);
   }
 
   &:hover > &__list {
@@ -241,7 +240,7 @@ const toggleMenu = () => {
     left: -12px;
     list-style-type: none;
     border-radius: 8px;
-    background-color: var(--c-filler);
+    background-color: var(--color-filler);
     min-width: 252px;
     padding: 0;
 
@@ -256,7 +255,7 @@ const toggleMenu = () => {
 
     &:hover,
     &:active {
-      background-color: var(--c-secondary);
+      background-color: var(--color-secondary);
     }
 
     &:first-child {
@@ -267,13 +266,13 @@ const toggleMenu = () => {
     }
   }
   &__link {
-    color: var(--c-text);
+    color: var(--color-text);
   }
 
   &__item > &__link {
     &:hover,
     &:active {
-      color: var(--c-text);
+      color: var(--color-text);
 
       &::before {
         display: none;
@@ -285,7 +284,6 @@ const toggleMenu = () => {
 .nav {
   display: flex;
   align-items: center;
-  margin: 0 152px 0 0;
 
   &__list {
     display: flex;
@@ -300,7 +298,7 @@ const toggleMenu = () => {
   }
 
   &__link {
-    color: var(--c-text);
+    color: var(--color-text);
   }
 
   &__button {
@@ -325,7 +323,6 @@ const toggleMenu = () => {
       z-index: 2;
       width: 100%;
       height: 100%;
-      background: var(--c-page-bg);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -359,6 +356,7 @@ const toggleMenu = () => {
       padding: 8px 34px 8px 16px;
       min-height: 0;
     }
+
   }
 
   .nav {
@@ -369,7 +367,7 @@ const toggleMenu = () => {
     }
 
     &__item {
-      border-top: 1px solid var(--c-text-elements);
+      border-top: 1px solid var(--color-text-elements);
       width: 100%;
       padding: 16px;
 
@@ -378,12 +376,12 @@ const toggleMenu = () => {
       }
 
       &:last-child {
-        border-bottom: 1px solid var(--c-text-elements);
+        border-bottom: 1px solid var(--color-text-elements);
       }
     }
 
     &__link {
-      color: var(--c-text);
+      color: var(--color-text);
     }
 
     &__button {
@@ -422,7 +420,7 @@ const toggleMenu = () => {
       }
     }
     &__item > &__link {
-      color: var(--c-link-text);
+      color: var(--color-link-text);
     }
   }
 }

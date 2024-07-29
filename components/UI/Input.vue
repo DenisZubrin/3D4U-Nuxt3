@@ -67,14 +67,14 @@ const model = defineModel();
 
   &__label {
     @extend %p5;
-    color: var(--c-text-elements);
+    color: var(--color-text-elements);
     position: absolute;
     top: 30px;
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     &_focused {
       top: 0;
-      color: var(--c-secondary);
+      color: var(--color-secondary);
     }
   }
 
@@ -83,9 +83,9 @@ const model = defineModel();
     background: inherit;
     outline: none;
     @extend %s4;
-    color: var(--c-text);
+    color: var(--color-text);
     border: none;
-    border-bottom: 1px solid var(--c-text);
+    border-bottom: 1px solid var(--color-text);
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 30px 0 12px;
     box-sizing: border-box;
@@ -93,17 +93,17 @@ const model = defineModel();
     &::placeholder {
       opacity: 0;
       @extend %s4; 
-      color: var(--c-text-elements);
+      color: var(--color-text-elements);
       transition: 0.3s;
     }
 
     &_focused {
-      border-color: var(--c-secondary);
+      border-color: var(--color-secondary);
     }
   }
 
   &__field:focus {
-    border-bottom: 1px solid var(--c-secondary);
+    border-bottom: 1px solid var(--color-secondary);
 
     &::placeholder {
       opacity: 1;
@@ -112,12 +112,12 @@ const model = defineModel();
 
   &:focus-within &__label {
     top: 0;
-    color: var(--c-secondary);
+    color: var(--color-secondary);
   }
 
   &__error {
     @extend %err;
-    color: var(--c-error);
+    color: var(--color-error);
     position: absolute;
     margin: 2px 0 0;
   }
@@ -148,7 +148,8 @@ const model = defineModel();
     align-items: center;
     justify-content: start;
     @extend %p3;
-    color: var(--c-text-elements);
+    color: var(--color-text-elements);
+    cursor: pointer;
 
     &::before {
       content: '';
@@ -156,7 +157,7 @@ const model = defineModel();
       margin: 0 12px 0 0;
       width: 18px;
       height: 18px;
-      border: 1px solid var(--c-text);
+      border: 1px solid var(--color-text);
       border-radius: 2px;
       box-sizing: border-box;
       transition-duration: 0.3s;
@@ -166,8 +167,8 @@ const model = defineModel();
 
   &__checkbox:checked ~ &__checkbox-label::before {
     background-image: url('~/assets/img/icons/Check.svg');
-    background-color: var(--c-secondary);
-    border-color: var(--c-secondary);
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
   }
 }
 
@@ -178,11 +179,11 @@ const model = defineModel();
     &__label,
     &:focus-within &__label {
       top: 0;
-      color: var(--c-text);
+      color: var(--color-text);
     }
 
     &__field:focus {
-      border-bottom: 1px solid var(--c-text);
+      border-bottom: 1px solid var(--color-text);
     }
 
     &__field::placeholder {
@@ -194,9 +195,9 @@ const model = defineModel();
     &__checkbox:checked ~ &__checkbox-label::before {
       background-image: url('~/assets/img/icons/Check_alternative.svg');
       background-position: -1px -1px;
-      background-color: var(--c-text);
+      background-color: var(--color-text);
       color: transparent;
-      border-color: var(--c-text);
+      border-color: var(--color-text);
     }
 
     &__checkbox-label {

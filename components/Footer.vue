@@ -9,7 +9,7 @@
                 class="logo__icon footer__logo-icon"
                 :width="68"
                 :height="75"
-                :iconColor="'var(--c-text)'"
+                :iconColor="'var(--color-text)'"
                 :iconName="'3D4U logo with caption'"
               >
                 <Icon3D4ULogoCaption />
@@ -141,7 +141,7 @@
 <style lang="scss">
 
 .footer {
-  background-color: var(--c-footer-bg);
+  background-color: var(--color-footer-bg);
 
   &__container {
     padding: 40px;
@@ -201,12 +201,12 @@
   }
 
   &__link {
-    color: var(--c-link-text);
+    color: var(--color-link-text);
     @extend %p4;
 
     &_highlighted {
       @extend %s4; 
-      color: var(--c-text);
+      color: var(--color-text);
     }
   }
 
@@ -216,12 +216,12 @@
 
   &__phone,
   &__email {
-    color: var(--c-text);
+    color: var(--color-text);
     display: inline-block;
     margin: 0 0 12px;
 
     &:hover {
-      color: var(--c-secondary);
+      color: var(--color-secondary);
     }
   }
 
@@ -239,18 +239,18 @@
     @extend %p4;
 
     &-building {
-      color: var(--c-text);
+      color: var(--color-text);
       display: block;
       width: 100%;
     }
 
     &-worktime {
-      color: var(--c-link-text);
+      color: var(--color-link-text);
     }
   }
 
   &__terms {
-    border-top: 1px solid var(--c-link-text);
+    border-top: 1px solid var(--color-link-text);
     padding: 32px 0 0 0;
     display: flex;
     flex-wrap: wrap;

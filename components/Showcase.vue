@@ -79,13 +79,13 @@ const articles = reactive([
   &__heading {
     margin: 0;
     @extend %h2;
-    color: var(--c-text);
+    color: var(--color-text);
     text-align: center;
   }
 
   &__description {
     @extend %p3;
-    color: var(--c-text);
+    color: var(--color-text);
     margin: 24px auto 38px;
     text-align: center;
     max-width: 667px;

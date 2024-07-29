@@ -31,12 +31,12 @@ defineProps({
   border-radius: 8px;
   min-height: 53px;
   box-sizing: border-box;
-  background-color: var(--c-text);
+  background-color: var(--color-text);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 42px;
-  color: var(--c-filler);
+  color: var(--color-filler);
   position: relative;
   cursor: pointer;
 
@@ -45,23 +45,31 @@ defineProps({
     @extend %button_l;
   }
 
-  &__icon {
+  &__icon-wrap {
     position: absolute;
     top: calc(50% - 11px);
     right: 8px;
   }
 
+  &-icon {
+    fill: var(--color-filler);
+  }
+
+  &:hover &__icon-wrap &__icon {
+    fill: var(--color-text);
+  }
+
   &:hover,
   &:active {
-    background-color: var(--c-secondary);
-    color: var(--c-text);
-    border-color: var(--c-secondary);
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    border-color: var(--color-secondary);
   }
 
   &_outline {
     background-color: transparent;
-    color: var(--c-text);
-    border: 1px solid var(--c-text);
+    color: var(--color-text);
+    border: 1px solid var(--color-text);
   }
 }
 </style>

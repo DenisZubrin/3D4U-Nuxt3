@@ -15,22 +15,19 @@
           v-for="(link, index) in links" :key="index" 
           class="slide__item"
         >
-          <NuxtLink 
-            @mouseover="iconColor = 'var(--c-secondary)'"
-            @mouseleave="iconColor = 'var(--c-text-elements)'"
+          <NuxtLink
             class="link slide__link" 
             to="#" 
           >
             {{ link }}
           </NuxtLink>
           <IconBase
-            class="slide__link-icon"
+            class="slide__icon-wrap"
             :width="22"
             :height="22"
-            :iconColor="iconColor"
             :iconName="'Arrow Up Right'"
           >
-            <IconArrowUpRight />
+            <IconArrowUpRight class="slide__icon"/>
           </IconBase>
         </li>
       </ul>
@@ -38,8 +35,8 @@
         class="slide__indicator-icon"
         :width="22"
         :height="22"
-        :iconColor="'var(--c-text-elements)'"
-        :iconName="'Slide indicator'"
+        :iconColor="'var(--color-text-elements)'"
+        :iconName="'Slide Indicator'"
       >
         <IconDoubleArrowDown />
       </IconBase>
@@ -48,8 +45,6 @@
 </template>
 
 <script setup>
-
-let iconColor = ref('var(--c-text-elements)');
 
 defineProps({
   links: {
@@ -102,13 +97,13 @@ defineProps({
 
   &__heading {
     @extend %h1;
-    color: var(--c-text);
+    color: var(--color-text);
     margin: 0 0 24px;
   }
 
   &__description {
     @extend %p3;
-    color: var(--c-text);
+    color: var(--color-text);
     margin: 0;
     width: 85%;
   }
@@ -128,35 +123,43 @@ defineProps({
     display: flex;
     justify-content: end;
     align-items: center;
-    border-top: 1px solid var(--c-text-elements);
+    border-top: 1px solid var(--color-text-elements);
     box-sizing: border-box;
 
     &:last-child {
-      border-bottom: 1px solid var(--c-text-elements);
+      border-bottom: 1px solid var(--color-text-elements);
     }
   }
 
   &__link {
     @extend %s3;
-    color: var(--c-text);
+    color: var(--color-text);
     text-decoration: none;
 
-    &-icon {
-      position: relative;
-      top: -1px;
-      left: 3px;
-    }
-
     &:hover {
-      color: var(--c-secondary);
+      color: var(--color-secondary);
       transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
   }
 
-  &__link:hover ~ &__link-icon {
-    fill: var(--c-secondary);
+  &__icon {
+    fill: var(--color-text-elements);
+
+    &-wrap {
+      position: relative;
+      top: -1px;
+      left: 3px;
+    }
+  }
+
+  &__link:hover ~ &__icon-wrap {
     transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
+  &__link:hover ~ &__icon-wrap &__icon {
+    fill: var(--color-secondary);
+  }
+  
 
   &__indicator-icon {
     display: none;

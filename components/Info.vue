@@ -9,21 +9,18 @@
           от небольших элементов интерьера до комплексного решения
           многофункциональных центров.
         </p>
-        <Button 
-          @mouseover="iconColor = 'var(--c-text)'"
-          @mouseleave="iconColor = 'var(--c-filler)'"
+        <Button
           class="button info__button"
           :text="'Узнать больше'" 
         >
           <template #icon>
             <IconBase
-              class="button__icon"
+              class="button__icon-wrap"
               :width="22"
               :height="22"
-              :iconColor="iconColor"
               :iconName="'ArrowUpRight'"
             >
-              <IconArrowUpRight />
+              <IconArrowUpRight class="button__icon-wrap"/>
             </IconBase>
           </template>
         </Button>
@@ -67,9 +64,7 @@
   </section>
 </template>
 
-<script setup>
-let iconColor = ref('var(--c-filler)');
-</script>
+<script setup></script>
 
 <style lang="scss">
 .info {
@@ -96,18 +91,18 @@ let iconColor = ref('var(--c-filler)');
 
   &__heading {
     @extend %h3;
-    color: var(--c-text);
+    color: var(--color-text);
     margin: 0;
   }
 
   &__description {
     @extend %p3;
-    color: var(--c-text);
+    color: var(--color-text);
     margin: 0;
   }
 
   &__achievments {
-    background-color: var(--c-filler);
+    background-color: var(--color-filler);
     padding: 44px 32px;
   }
 
@@ -117,12 +112,12 @@ let iconColor = ref('var(--c-filler)');
 
   &__text {
     @extend %p4;
-    color: var(--c-text);
+    color: var(--color-text);
   }
 
   &__number {
     @extend %num;
-    color: var(--c-text);
+    color: var(--color-text);
     display: block;
   }
 
@@ -170,7 +165,6 @@ let iconColor = ref('var(--c-filler)');
   .info {
     &__container {
       flex-direction: column;
-      // gap: 0;
     }
 
     &__heading {

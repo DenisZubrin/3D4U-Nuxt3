@@ -20,7 +20,7 @@
               class="article__more-info-icon"
               :width="22"
               :height="22"
-              :iconColor="'var(--c-text)'"
+              :iconColor="'var(--color-text)'"
               :iconName="'Arrow Up Right'"
             >
               <IconArrowUpRight />
@@ -56,8 +56,8 @@ defineProps({
   border-radius: 8px;
   background: linear-gradient(
     to top right,
-    var(--c-gradient-start),
-    var(--c-gradient-end)
+    var(--color-gradient-start),
+    var(--color-gradient-end)
   );
 
   &__container {
@@ -104,13 +104,13 @@ defineProps({
   &__text,
   &__external {
     z-index: 1;
-    color: var(--c-text);
+    color: var(--color-text);
   }
 
   &__text {
     display: flex;
     flex-direction: column;
-    max-width: 467px;
+    
   }
 
   &:hover &__inner {
@@ -136,12 +136,14 @@ defineProps({
   &__heading {
     @extend %s2;
     margin: 0;
+    max-width: 467px;
   }
 
   &__description {
     @extend %p4;
     margin: 24px 0 0;
-    color: var(--c-text);
+    color: var(--color-text);
+    max-width: 467px;
   }
 
   &__more-info {

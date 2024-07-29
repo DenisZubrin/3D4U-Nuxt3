@@ -111,7 +111,7 @@ const submitForm = async () => {
 
   &__error {
     @extend %err;
-    color: var(--c-error);
+    color: var(--color-error);
     position: absolute;
     margin: 2px 0 0;
   }

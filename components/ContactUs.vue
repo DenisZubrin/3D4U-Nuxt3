@@ -61,13 +61,13 @@
   &__heading {
     margin: 0 0 24px;
     @extend %h1;
-    color: var(--c-text);
+    color: var(--color-text);
   }
 
   &__description {
     margin: 0 0 48px;
     @extend %p4;
-    color: var(--c-text);
+    color: var(--color-text);
   }
 
   &__link-to-top {
@@ -79,7 +79,7 @@
   &__arrow-top-icon {
     width: 32px;
     height: 32px;
-    fill: var(--c-text);
+    fill: var(--color-text);
 
     &:hover {
       fill: var(secondary);

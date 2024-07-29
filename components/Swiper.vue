@@ -6,10 +6,9 @@
     :modules="modules"
     :mousewheel="{
       enabled: true,
-      releaseOnEdges: true,
+      releaseOnEdges: true
     }"
     :watchSlidesProgress="true"
-    @slideNextTransitionEnd="onLastSlide"
     :speed="1000"
   >
     <swiper-slide 
@@ -75,5 +74,5 @@ const slides = reactive([
 </script>
 
 <style lang="scss">
-@import '../assets/styles/swiper.scss';
+@import '~/assets/styles/swiper.scss';
 </style>
