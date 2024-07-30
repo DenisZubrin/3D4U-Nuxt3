@@ -333,6 +333,7 @@ const toggleMenu = () => {
         opacity: 1;
         visibility: visible;
         left: 0;
+        background-color: var(--color-primary);
       }
     }
 
@@ -398,7 +399,7 @@ const toggleMenu = () => {
     align-items: start;
     padding: 0;
 
-    &__icon {
+    &__icon-wrap {
       display: none;
     }
 

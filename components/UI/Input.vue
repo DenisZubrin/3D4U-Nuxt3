@@ -12,6 +12,7 @@
       v-if="label"
       :class="{
         'input__label': type === 'text' || type === 'number',
+        'input__label_focused': model,
         'input__checkbox-label': type === 'checkbox',
       }"
       :for="id"
@@ -21,7 +22,11 @@
     <input
       v-model="model"
       v-if="type === 'text' || type === 'number'"
-      class="input__field"
+      :class="[
+        'input__field', {
+          'input__field_focused': model
+        }
+      ]"
       :type="type"
       :id="id"
       :name="name"
@@ -143,7 +148,7 @@ const model = defineModel();
   }
 
   &__checkbox-label {
-    display: flex;
+    display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: start;
@@ -170,6 +175,20 @@ const model = defineModel();
     background-color: var(--color-secondary);
     border-color: var(--color-secondary);
   }
+
+  &__field_focused {
+    border-bottom: 1px solid var(--color-secondary);
+
+    &::placeholder {
+      opacity: 1;
+    }
+  }
+
+  &__label_focused {
+    top: 0;
+    color: var(--color-secondary);
+  }
+  
 }
 
 @media screen and (max-width: 540px) {
@@ -202,11 +221,18 @@ const model = defineModel();
 
     &__checkbox-label {
       display: inline-block;
-      width: 100%;
 
       &::before {
         float: left;
       }
+    }
+
+    &__field_focused {
+      border-bottom: 1px solid var(--color-text);
+    }
+
+    &__label_focused {
+      color: var(--color-text);
     }
   }
 }

@@ -110,6 +110,7 @@ defineProps({
   &__text {
     display: flex;
     flex-direction: column;
+    width: 100%;
     
   }
 

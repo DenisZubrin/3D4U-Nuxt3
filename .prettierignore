@@ -8,6 +8,7 @@ node_modules
 .output
 .nuxt
 .git
+.github
 
 # IDE
 .idea/
