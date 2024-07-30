@@ -6,13 +6,15 @@
     :modules="modules"
     :mousewheel="{
       enabled: true,
-      releaseOnEdges: true,
+      releaseOnEdges: true
     }"
     :watchSlidesProgress="true"
-    @slideNextTransitionEnd="onLastSlide"
     :speed="1000"
   >
-    <swiper-slide v-for="(slide, index) in slides" :key="index">
+    <swiper-slide 
+      v-for="(slide, index) in slides" 
+      :key="index"
+    >
       <Slide
         :image="slide.image"
         :links="slide.links"
@@ -22,6 +24,7 @@
     </swiper-slide>
   </swiper>
 </template>
+
 <script setup>
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Pagination, Mousewheel } from 'swiper/modules';
@@ -67,7 +70,9 @@ const slides = reactive([
     links: ['Смотреть проекты'],
   },
 ]);
+
 </script>
+
 <style lang="scss">
-@import '../assets/styles/swiper.scss';
+@import '~/assets/styles/swiper.scss';
 </style>

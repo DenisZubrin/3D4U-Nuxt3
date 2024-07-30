@@ -7,17 +7,16 @@ export default defineNuxtConfig({
   app: {
     baseURL: '/3D4U-Nuxt3/',
   },
-  css: ['./assets/styles/style.scss'],
+  css: ['~/assets/styles/style.scss'],
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "@/assets/styles/variables.scss";',
+          additionalData: '@import "~/assets/styles/variables.scss";',
         },
       },
     },
   },
-
   components: [
     {
       path: '~/components',

@@ -19,7 +19,9 @@
     </div>
   </section>
 </template>
+
 <script setup>
+
 const articles = reactive([
   {
     id: 1,
@@ -64,8 +66,11 @@ const articles = reactive([
     text: ``,
   },
 ]);
+
 </script>
+
 <style lang="scss">
+
 .showcase {
   &__container {
     padding-bottom: 100px;
@@ -73,16 +78,17 @@ const articles = reactive([
 
   &__heading {
     margin: 0;
-    @extend %h1;
-    color: var(--c-text);
+    @extend %h2;
+    color: var(--color-text);
     text-align: center;
   }
 
   &__description {
     @extend %p3;
-    color: var(--c-text);
+    color: var(--color-text);
     margin: 24px auto 38px;
     text-align: center;
+    max-width: 667px;
   }
 
   &__articles {
